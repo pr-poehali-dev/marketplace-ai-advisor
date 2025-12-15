@@ -24,7 +24,7 @@ function Navigation() {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 text-xl font-bold text-gray-900">
             <Icon name="BarChart3" size={28} className="text-primary" />
-            <span>MarketInsight</span>
+            <span>MIRRO</span>
           </Link>
           
           <div className="flex items-center gap-8">
