@@ -18,7 +18,7 @@ export default function Blog() {
       excerpt: 'Реальный кейс оптимизации товарной карточки бытовой техники',
       date: '12 декабря 2025',
       readTime: '12 мин',
-      image: '🚀'
+      image: '✨'
     },
     {
       category: 'Руководства',
@@ -26,7 +26,7 @@ export default function Blog() {
       excerpt: 'Пошаговое руководство по улучшению каждого элемента карточки',
       date: '8 декабря 2025',
       readTime: '15 мин',
-      image: '✅'
+      image: '📋'
     },
     {
       category: 'Тренды',
@@ -50,7 +50,7 @@ export default function Blog() {
       excerpt: 'Исследование факторов, которые заставляют покупателя нажать "Купить"',
       date: '28 ноября 2025',
       readTime: '9 мин',
-      image: '🧠'
+      image: '💡'
     }
   ];
 
@@ -89,7 +89,7 @@ export default function Blog() {
                   </div>
                 </div>
               </div>
-              <div className="text-9xl text-center">🎯</div>
+              <div className="text-9xl text-center">✨</div>
             </div>
           </CardContent>
         </Card>
