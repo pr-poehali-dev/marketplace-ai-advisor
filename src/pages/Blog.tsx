@@ -55,32 +55,30 @@ export default function Blog() {
   ];
 
   return (
-    <div className="min-h-screen py-12">
+    <div className="min-h-screen py-12 bg-background">
       <div className="container mx-auto px-6 max-w-6xl space-y-12">
-        {/* Header */}
         <div className="text-center space-y-4 animate-fade-in">
-          <h1 className="text-4xl font-bold text-gray-900">Блог</h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <h1 className="text-4xl font-bold text-foreground">Блог</h1>
+          <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
             Экспертные статьи, кейсы и руководства по аналитике маркетплейсов
           </p>
         </div>
 
-        {/* Featured Post */}
-        <Card className="border-gray-200 overflow-hidden bg-gradient-to-br from-primary/5 to-purple-500/5 hover-scale transition-all">
+        <Card className="border-2 overflow-hidden bg-card hover-scale transition-all">
           <CardContent className="p-8 md:p-12">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="space-y-6">
-                <Badge className="bg-primary">Рекомендуем</Badge>
+                <Badge className="bg-foreground text-background">Рекомендуем</Badge>
                 <div className="space-y-4">
-                  <h2 className="text-3xl font-bold text-gray-900">
+                  <h2 className="text-3xl font-bold text-foreground">
                     Как ИИ помогает увеличивать продажи на маркетплейсах
                   </h2>
-                  <p className="text-lg text-gray-600">
+                  <p className="text-lg text-foreground/70">
                     Подробный разбор технологий машинного обучения и их применения 
                     для анализа товарных карточек. Практические примеры и результаты.
                   </p>
                 </div>
-                <div className="flex items-center gap-4 text-sm text-gray-500">
+                <div className="flex items-center gap-4 text-sm text-foreground/60">
                   <div className="flex items-center gap-2">
                     <Icon name="Calendar" size={16} />
                     <span>15 декабря 2025</span>
@@ -96,29 +94,28 @@ export default function Blog() {
           </CardContent>
         </Card>
 
-        {/* Blog Posts Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {posts.map((post, index) => (
             <Card 
               key={index} 
-              className="border-gray-200 hover:border-primary transition-all hover-scale cursor-pointer group"
+              className="border-2 hover:border-foreground transition-all hover-scale cursor-pointer group bg-card"
             >
               <CardHeader className="space-y-4">
                 <div className="text-6xl">{post.image}</div>
                 <div className="space-y-3">
-                  <Badge variant="secondary" className="text-xs">
+                  <Badge variant="secondary" className="text-xs border-2">
                     {post.category}
                   </Badge>
-                  <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                  <CardTitle className="text-xl group-hover:text-foreground/70 transition-colors text-foreground">
                     {post.title}
                   </CardTitle>
-                  <CardDescription className="text-base">
+                  <CardDescription className="text-base text-foreground/70">
                     {post.excerpt}
                   </CardDescription>
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="flex items-center gap-4 text-sm text-gray-500">
+                <div className="flex items-center gap-4 text-sm text-foreground/60">
                   <div className="flex items-center gap-1">
                     <Icon name="Calendar" size={14} />
                     <span>{post.date}</span>
@@ -133,12 +130,11 @@ export default function Blog() {
           ))}
         </div>
 
-        {/* Newsletter CTA */}
-        <Card className="bg-gradient-to-br from-primary to-purple-600 border-0 text-white">
+        <Card className="bg-foreground border-2 border-foreground text-background">
           <CardContent className="p-12 text-center space-y-6">
             <div className="space-y-3">
               <h3 className="text-3xl font-bold">Подписка на новости</h3>
-              <p className="text-lg text-white/90 max-w-xl mx-auto">
+              <p className="text-lg text-background/80 max-w-xl mx-auto">
                 Получайте свежие статьи, кейсы и эксклюзивные материалы 
                 прямо на почту раз в неделю
               </p>
@@ -147,9 +143,9 @@ export default function Blog() {
               <input 
                 type="email" 
                 placeholder="Ваш email"
-                className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
+                className="flex-1 px-4 py-3 rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-background border-2"
               />
-              <button className="px-6 py-3 bg-white text-primary rounded-lg font-medium hover:bg-gray-100 transition-colors">
+              <button className="px-6 py-3 bg-background text-foreground rounded-lg font-medium hover:bg-background/90 transition-colors">
                 Подписаться
               </button>
             </div>

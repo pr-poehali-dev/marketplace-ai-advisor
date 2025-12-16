@@ -19,11 +19,11 @@ function Navigation() {
   const isActive = (path: string) => location.pathname === path;
   
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b-2 border-border">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 text-xl font-bold text-gray-900">
-            <Icon name="BarChart3" size={28} className="text-primary" />
+          <Link to="/" className="flex items-center gap-2 text-xl font-bold text-foreground">
+            <Icon name="BarChart3" size={28} className="text-foreground" />
             <span>MIRRO</span>
           </Link>
           
@@ -31,7 +31,7 @@ function Navigation() {
             <Link 
               to="/" 
               className={`text-sm font-medium transition-colors ${
-                isActive('/') ? 'text-primary' : 'text-gray-600 hover:text-gray-900'
+                isActive('/') ? 'text-foreground' : 'text-foreground/60 hover:text-foreground'
               }`}
             >
               Главная
@@ -39,7 +39,7 @@ function Navigation() {
             <Link 
               to="/analyzer" 
               className={`text-sm font-medium transition-colors ${
-                isActive('/analyzer') ? 'text-primary' : 'text-gray-600 hover:text-gray-900'
+                isActive('/analyzer') ? 'text-foreground' : 'text-foreground/60 hover:text-foreground'
               }`}
             >
               Анализатор
@@ -47,7 +47,7 @@ function Navigation() {
             <Link 
               to="/blog" 
               className={`text-sm font-medium transition-colors ${
-                isActive('/blog') ? 'text-primary' : 'text-gray-600 hover:text-gray-900'
+                isActive('/blog') ? 'text-foreground' : 'text-foreground/60 hover:text-foreground'
               }`}
             >
               Блог
@@ -55,7 +55,7 @@ function Navigation() {
             <Link 
               to="/contacts" 
               className={`text-sm font-medium transition-colors ${
-                isActive('/contacts') ? 'text-primary' : 'text-gray-600 hover:text-gray-900'
+                isActive('/contacts') ? 'text-foreground' : 'text-foreground/60 hover:text-foreground'
               }`}
             >
               Контакты
@@ -73,7 +73,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-background">
           <Navigation />
           <main className="pt-16">
             <Routes>

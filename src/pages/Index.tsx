@@ -28,15 +28,15 @@ export default function Index() {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <section className="container mx-auto px-6 py-24">
         <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
-          <h1 className="text-6xl font-bold text-gray-900 leading-tight">
+          <h1 className="text-6xl font-bold text-foreground leading-tight">
             Аналитика маркетплейсов
-            <span className="block text-primary mt-2">нового поколения</span>
+            <span className="block mt-2">нового поколения</span>
           </h1>
           
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
             ИИ анализирует ваши карточки товаров и дает точные рекомендации 
             для роста конверсии и увеличения продаж
           </p>
@@ -48,27 +48,27 @@ export default function Index() {
                 <Icon name="ArrowRight" size={20} className="ml-2" />
               </Button>
             </Link>
-            <Button size="lg" variant="outline" className="text-base px-8 hover-scale">
+            <Button size="lg" variant="outline" className="text-base px-8 hover-scale border-2">
               Посмотреть демо
             </Button>
           </div>
         </div>
       </section>
 
-      <section className="bg-white py-16">
+      <section className="bg-card py-16 border-y border-border">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center space-y-2">
-              <div className="text-5xl font-bold text-primary">+43%</div>
-              <div className="text-gray-600">рост конверсии</div>
+              <div className="text-5xl font-bold text-foreground">+43%</div>
+              <div className="text-foreground/60">рост конверсии</div>
             </div>
             <div className="text-center space-y-2">
-              <div className="text-5xl font-bold text-primary">2.8x</div>
-              <div className="text-gray-600">увеличение CTR</div>
+              <div className="text-5xl font-bold text-foreground">2.8x</div>
+              <div className="text-foreground/60">увеличение CTR</div>
             </div>
             <div className="text-center space-y-2">
-              <div className="text-5xl font-bold text-primary">15 мин</div>
-              <div className="text-gray-600">до первых результатов</div>
+              <div className="text-5xl font-bold text-foreground">15 мин</div>
+              <div className="text-foreground/60">до первых результатов</div>
             </div>
           </div>
         </div>
@@ -77,10 +77,10 @@ export default function Index() {
       <section className="container mx-auto px-6 py-24">
         <div className="max-w-6xl mx-auto space-y-12">
           <div className="text-center space-y-4">
-            <h2 className="text-4xl font-bold text-gray-900">
+            <h2 className="text-4xl font-bold text-foreground">
               Все инструменты в одном месте
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-foreground/70">
               Комплексная аналитика для максимального результата
             </p>
           </div>
@@ -89,16 +89,16 @@ export default function Index() {
             {features.map((feature, index) => (
               <Card 
                 key={index} 
-                className="border-gray-200 hover:border-primary transition-all duration-300 hover-scale"
+                className="border-2 hover:border-foreground transition-all duration-300 hover-scale bg-card"
               >
                 <CardContent className="p-8 space-y-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <Icon name={feature.icon} size={24} className="text-primary" />
+                  <div className="w-12 h-12 bg-foreground rounded-lg flex items-center justify-center">
+                    <Icon name={feature.icon} size={24} className="text-background" />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900">
+                  <h3 className="text-xl font-semibold text-foreground">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600">
+                  <p className="text-foreground/70">
                     {feature.description}
                   </p>
                 </CardContent>
@@ -108,12 +108,12 @@ export default function Index() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-br from-primary to-purple-600 py-20">
+      <section className="bg-foreground py-20 border-y border-foreground">
         <div className="container mx-auto px-6 text-center space-y-6">
-          <h2 className="text-4xl font-bold text-white">
+          <h2 className="text-4xl font-bold text-background">
             Готовы увеличить продажи?
           </h2>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto">
+          <p className="text-xl text-background/80 max-w-2xl mx-auto">
             Начните анализировать ваши товары прямо сейчас
           </p>
           <Link to="/analyzer">

@@ -9,8 +9,8 @@ export default function Contacts() {
     {
       icon: 'Mail',
       title: 'Email',
-      value: 'hello@marketinsight.ru',
-      link: 'mailto:hello@marketinsight.ru'
+      value: 'hello@mirro.ru',
+      link: 'mailto:hello@mirro.ru'
     },
     {
       icon: 'Phone',
@@ -21,69 +21,68 @@ export default function Contacts() {
     {
       icon: 'MessageCircle',
       title: 'Telegram',
-      value: '@marketinsight_bot',
-      link: 'https://t.me/marketinsight_bot'
+      value: '@mirro_bot',
+      link: 'https://t.me/mirro_bot'
     }
   ];
 
   return (
-    <div className="min-h-screen py-12">
+    <div className="min-h-screen py-12 bg-background">
       <div className="container mx-auto px-6 max-w-6xl space-y-12">
-        {/* Header */}
         <div className="text-center space-y-4 animate-fade-in">
-          <h1 className="text-4xl font-bold text-gray-900">Контакты</h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <h1 className="text-4xl font-bold text-foreground">Контакты</h1>
+          <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
             Свяжитесь с нами удобным способом — ответим в течение часа
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {/* Contact Form */}
           <div className="md:col-span-2">
-            <Card className="border-gray-200">
+            <Card className="border-2 bg-card">
               <CardHeader>
-                <CardTitle className="text-2xl">Отправить сообщение</CardTitle>
-                <CardDescription className="text-base">
+                <CardTitle className="text-2xl text-foreground">Отправить сообщение</CardTitle>
+                <CardDescription className="text-base text-foreground/70">
                   Заполните форму и мы свяжемся с вами в ближайшее время
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-700">
+                    <label className="text-sm font-medium text-foreground">
                       Ваше имя
                     </label>
-                    <Input placeholder="Иван Петров" />
+                    <Input placeholder="Иван Петров" className="border-2" />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-700">
+                    <label className="text-sm font-medium text-foreground">
                       Email
                     </label>
-                    <Input type="email" placeholder="ivan@example.com" />
+                    <Input type="email" placeholder="ivan@example.com" className="border-2" />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-700">
+                  <label className="text-sm font-medium text-foreground">
                     Телефон
                   </label>
-                  <Input placeholder="+7 (___) ___-__-__" />
+                  <Input placeholder="+7 (___) ___-__-__" className="border-2" />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-700">
+                  <label className="text-sm font-medium text-foreground">
                     Тема обращения
                   </label>
-                  <Input placeholder="Вопрос по анализу товаров" />
+                  <Input placeholder="Вопрос по анализу товаров" className="border-2" />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-700">
+                  <label className="text-sm font-medium text-foreground">
                     Сообщение
                   </label>
                   <Textarea 
                     placeholder="Расскажите подробнее о вашем вопросе..." 
                     rows={6}
+                    className="border-2"
                   />
                 </div>
 
@@ -95,9 +94,7 @@ export default function Contacts() {
             </Card>
           </div>
 
-          {/* Contact Info */}
           <div className="space-y-6">
-            {/* Contact Methods */}
             <div className="space-y-4">
               {contactMethods.map((method, index) => (
                 <a 
@@ -105,16 +102,16 @@ export default function Contacts() {
                   href={method.link}
                   className="block"
                 >
-                  <Card className="border-gray-200 hover:border-primary transition-all hover-scale cursor-pointer">
+                  <Card className="border-2 hover:border-foreground transition-all hover-scale cursor-pointer bg-card">
                     <CardContent className="p-6 space-y-3">
-                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <Icon name={method.icon} size={24} className="text-primary" />
+                      <div className="w-12 h-12 bg-foreground rounded-lg flex items-center justify-center">
+                        <Icon name={method.icon} size={24} className="text-background" />
                       </div>
                       <div className="space-y-1">
-                        <div className="text-sm font-medium text-gray-600">
+                        <div className="text-sm font-medium text-foreground/70">
                           {method.title}
                         </div>
-                        <div className="font-semibold text-gray-900">
+                        <div className="font-semibold text-foreground">
                           {method.value}
                         </div>
                       </div>
@@ -124,18 +121,17 @@ export default function Contacts() {
               ))}
             </div>
 
-            {/* Working Hours */}
-            <Card className="border-gray-200 bg-gray-50">
+            <Card className="border-2 bg-card">
               <CardContent className="p-6 space-y-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <Icon name="Clock" size={20} className="text-primary" />
+                  <div className="w-10 h-10 bg-foreground rounded-lg flex items-center justify-center">
+                    <Icon name="Clock" size={20} className="text-background" />
                   </div>
-                  <div className="font-semibold text-gray-900">
+                  <div className="font-semibold text-foreground">
                     Время работы
                   </div>
                 </div>
-                <div className="space-y-2 text-sm text-gray-600">
+                <div className="space-y-2 text-sm text-foreground/70">
                   <div className="flex justify-between">
                     <span>Понедельник - Пятница</span>
                     <span className="font-medium">9:00 - 19:00</span>
@@ -152,10 +148,9 @@ export default function Contacts() {
               </CardContent>
             </Card>
 
-            {/* Social Links */}
-            <Card className="border-gray-200">
+            <Card className="border-2 bg-card">
               <CardContent className="p-6 space-y-4">
-                <div className="font-semibold text-gray-900">
+                <div className="font-semibold text-foreground">
                   Мы в соцсетях
                 </div>
                 <div className="flex gap-3">
@@ -163,7 +158,7 @@ export default function Contacts() {
                     <a
                       key={index}
                       href="#"
-                      className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
+                      className="w-10 h-10 bg-foreground rounded-lg flex items-center justify-center hover:bg-foreground/80 text-background transition-colors"
                     >
                       <Icon name={icon} size={20} />
                     </a>
@@ -174,18 +169,17 @@ export default function Contacts() {
           </div>
         </div>
 
-        {/* FAQ Section */}
-        <Card className="bg-gradient-to-br from-primary/5 to-purple-500/5 border-gray-200">
+        <Card className="bg-card border-2">
           <CardContent className="p-12 text-center space-y-4">
             <div className="text-5xl mb-4">💬</div>
-            <h3 className="text-2xl font-bold text-gray-900">
+            <h3 className="text-2xl font-bold text-foreground">
               Есть вопросы?
             </h3>
-            <p className="text-gray-600 max-w-xl mx-auto">
+            <p className="text-foreground/70 max-w-xl mx-auto">
               Загляните в наш раздел частых вопросов — возможно, 
               ответ на ваш вопрос уже там
             </p>
-            <Button variant="outline" size="lg" className="hover-scale">
+            <Button variant="outline" size="lg" className="hover-scale border-2">
               Перейти к FAQ
               <Icon name="ArrowRight" size={20} className="ml-2" />
             </Button>
