@@ -80,11 +80,11 @@ export default function Blog() {
                 </div>
                 <div className="flex items-center gap-4 text-sm text-foreground/60">
                   <div className="flex items-center gap-2">
-                    <Icon name="Calendar" size={16} />
+                    <span>📅</span>
                     <span>15 декабря 2025</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Icon name="Clock" size={16} />
+                    <span>⏱️</span>
                     <span>10 мин чтения</span>
                   </div>
                 </div>
@@ -117,11 +117,11 @@ export default function Blog() {
               <CardContent>
                 <div className="flex items-center gap-4 text-sm text-foreground/60">
                   <div className="flex items-center gap-1">
-                    <Icon name="Calendar" size={14} />
+                    <span>📅</span>
                     <span>{post.date}</span>
                   </div>
                   <div className="flex items-center gap-1">
-                    <Icon name="Clock" size={14} />
+                    <span>⏱️</span>
                     <span>{post.readTime}</span>
                   </div>
                 </div>
