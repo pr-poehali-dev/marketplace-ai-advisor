@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Index from "./pages/Index";
 import Analyzer from "./pages/Analyzer";
 import Blog from "./pages/Blog";
@@ -67,6 +68,34 @@ function Navigation() {
   );
 }
 
+function PageTransition({ children }: { children: React.ReactNode }) {
+  const location = useLocation();
+  const [displayLocation, setDisplayLocation] = useState(location);
+  const [transitionStage, setTransitionStage] = useState("fadeIn");
+
+  useEffect(() => {
+    if (location !== displayLocation) {
+      setTransitionStage("fadeOut");
+    }
+  }, [location, displayLocation]);
+
+  return (
+    <div
+      className={`transition-opacity duration-300 ${
+        transitionStage === "fadeOut" ? "opacity-0" : "opacity-100"
+      }`}
+      onTransitionEnd={() => {
+        if (transitionStage === "fadeOut") {
+          setTransitionStage("fadeIn");
+          setDisplayLocation(location);
+        }
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -76,13 +105,15 @@ const App = () => (
         <div className="min-h-screen bg-background">
           <Navigation />
           <main className="pt-16">
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/analyzer" element={<Analyzer />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/contacts" element={<Contacts />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            <PageTransition>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/analyzer" element={<Analyzer />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/contacts" element={<Contacts />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </PageTransition>
           </main>
         </div>
       </BrowserRouter>
