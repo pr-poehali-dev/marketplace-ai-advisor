@@ -6,16 +6,68 @@ import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 
+interface AnalysisStage {
+  id: number;
+  title: string;
+  description: string;
+  duration: number;
+}
+
 export default function Analyzer() {
   const [analyzing, setAnalyzing] = useState(false);
   const [showResults, setShowResults] = useState(false);
+  const [currentStage, setCurrentStage] = useState(0);
+  const [completedStages, setCompletedStages] = useState<number[]>([]);
 
-  const handleAnalyze = () => {
+  const analysisStages: AnalysisStage[] = [
+    {
+      id: 1,
+      title: 'Загружаю данные товара',
+      description: 'Получаю информацию о карточке, фото и характеристиках',
+      duration: 800
+    },
+    {
+      id: 2,
+      title: 'Анализирую визуальный контент',
+      description: 'ИИ оценивает качество и композицию фотографий',
+      duration: 1200
+    },
+    {
+      id: 3,
+      title: 'Сравниваю с конкурентами',
+      description: 'Изучаю 50+ похожих товаров в категории',
+      duration: 1000
+    },
+    {
+      id: 4,
+      title: 'Проверяю SEO-оптимизацию',
+      description: 'Анализирую заголовок, описание и ключевые слова',
+      duration: 900
+    },
+    {
+      id: 5,
+      title: 'Формирую рекомендации',
+      description: 'ИИ составляет персональный план улучшений',
+      duration: 1100
+    }
+  ];
+
+  const handleAnalyze = async () => {
     setAnalyzing(true);
-    setTimeout(() => {
-      setAnalyzing(false);
-      setShowResults(true);
-    }, 2000);
+    setShowResults(false);
+    setCurrentStage(0);
+    setCompletedStages([]);
+
+    for (let i = 0; i < analysisStages.length; i++) {
+      setCurrentStage(i);
+      await new Promise(resolve => setTimeout(resolve, analysisStages[i].duration));
+      setCompletedStages(prev => [...prev, i]);
+    }
+
+    setAnalyzing(false);
+    setShowResults(true);
+    setCurrentStage(0);
+    setCompletedStages([]);
   };
 
   const metrics = [
@@ -94,6 +146,72 @@ export default function Analyzer() {
             </div>
           </CardContent>
         </Card>
+
+        {analyzing && (
+          <Card className="border-2 bg-card animate-fade-in">
+            <CardContent className="p-8 space-y-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-foreground rounded-full flex items-center justify-center">
+                  <Icon name="Brain" size={20} className="text-background animate-pulse" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-foreground">Нейросеть анализирует товар</h3>
+                  <p className="text-sm text-foreground/60">Это займет около 5 секунд</p>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                {analysisStages.map((stage, index) => {
+                  const isActive = currentStage === index;
+                  const isCompleted = completedStages.includes(index);
+                  
+                  return (
+                    <div 
+                      key={stage.id}
+                      className={`flex items-start gap-4 p-4 rounded-lg border-2 transition-all ${
+                        isActive ? 'bg-foreground/5 border-foreground' : 
+                        isCompleted ? 'bg-foreground/5 border-foreground/20' : 
+                        'border-transparent'
+                      }`}
+                    >
+                      <div className="flex-shrink-0 mt-1">
+                        {isCompleted ? (
+                          <div className="w-6 h-6 bg-foreground rounded-full flex items-center justify-center">
+                            <Icon name="Check" size={16} className="text-background" />
+                          </div>
+                        ) : isActive ? (
+                          <div className="w-6 h-6 bg-foreground rounded-full flex items-center justify-center">
+                            <Icon name="Loader2" size={16} className="text-background animate-spin" />
+                          </div>
+                        ) : (
+                          <div className="w-6 h-6 bg-foreground/20 rounded-full" />
+                        )}
+                      </div>
+                      
+                      <div className="flex-1 min-w-0">
+                        <h4 className={`font-semibold ${
+                          isActive || isCompleted ? 'text-foreground' : 'text-foreground/40'
+                        }`}>
+                          {stage.title}
+                        </h4>
+                        <p className={`text-sm mt-1 ${
+                          isActive || isCompleted ? 'text-foreground/70' : 'text-foreground/30'
+                        }`}>
+                          {stage.description}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <Progress 
+                value={(completedStages.length / analysisStages.length) * 100} 
+                className="h-2"
+              />
+            </CardContent>
+          </Card>
+        )}
 
         {showResults && (
           <div className="space-y-8 animate-fade-in">
