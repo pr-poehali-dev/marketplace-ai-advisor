@@ -82,28 +82,48 @@ export default function Analyzer() {
       icon: 'Image',
       title: 'Улучшите главное фото',
       description: 'Товар занимает только 45% кадра. Рекомендуем увеличить до 75-85%',
-      impact: '+1.8% к CTR'
+      impact: '+1.8% к CTR',
+      insights: [
+        { label: 'Средний показатель в категории', value: '78% площади кадра' },
+        { label: 'Топ-10 продавцов используют', value: '75-85% площади' },
+        { label: 'Исследование Nielsen', value: 'Увеличение на 30% → +12% CTR' }
+      ]
     },
     {
       priority: 'high',
       icon: 'Type',
       title: 'Оптимизируйте заголовок',
       description: 'Добавьте ключевые характеристики в первые 50 символов',
-      impact: '+2.1% к конверсии'
+      impact: '+2.1% к конверсии',
+      insights: [
+        { label: 'Лучшие практики WB', value: 'Ключевые слова в начале' },
+        { label: 'Анализ 1000+ карточек', value: '87% топа используют этот подход' },
+        { label: 'A/B тестирование', value: 'Конверсия выше на 34%' }
+      ]
     },
     {
       priority: 'medium',
       icon: 'DollarSign',
       title: 'Пересмотрите цену',
       description: 'Ваша цена на 12% выше средней по категории',
-      impact: '+0.9% к конверсии'
+      impact: '+0.9% к конверсии',
+      insights: [
+        { label: 'Средняя цена в категории', value: '2,890 ₽' },
+        { label: 'Оптимальный диапазон', value: '2,500 — 3,200 ₽' },
+        { label: 'Психология цены', value: 'Окончание на 90 ₽ → +8% продаж' }
+      ]
     },
     {
       priority: 'medium',
       icon: 'Star',
       title: 'Соберите больше отзывов',
       description: 'У конкурентов в среднем 47 отзывов, у вас — 12',
-      impact: '+1.2% к доверию'
+      impact: '+1.2% к доверию',
+      insights: [
+        { label: 'Минимум для доверия', value: '25+ отзывов' },
+        { label: 'Топ-продавцы имеют', value: '50+ отзывов' },
+        { label: 'BrightLocal исследование', value: '91% читают перед покупкой' }
+      ]
     },
   ];
 
@@ -256,24 +276,24 @@ export default function Analyzer() {
                 </Badge>
               </div>
 
-              <div className="grid grid-cols-1 gap-4">
+              <div className="grid grid-cols-1 gap-6">
                 {recommendations.map((rec, index) => (
                   <Card 
                     key={index} 
-                    className="border-l-4 border-2 transition-all hover:shadow-lg bg-card border-l-foreground"
+                    className="border-l-4 border-2 transition-all hover:shadow-lg bg-card border-l-foreground overflow-hidden"
                   >
                     <CardHeader>
                       <div className="flex items-start justify-between">
                         <div className="flex items-start gap-4">
-                          <div className="w-10 h-10 bg-foreground rounded-lg flex items-center justify-center">
+                          <div className="w-10 h-10 bg-foreground rounded-lg flex items-center justify-center flex-shrink-0">
                             <Icon 
                               name={rec.icon} 
                               size={20} 
                               className="text-background"
                             />
                           </div>
-                          <div className="space-y-1">
-                            <div className="flex items-center gap-2">
+                          <div className="space-y-1 flex-1">
+                            <div className="flex items-center gap-2 flex-wrap">
                               <CardTitle className="text-lg text-foreground">{rec.title}</CardTitle>
                               <Badge 
                                 variant="outline"
@@ -287,13 +307,33 @@ export default function Analyzer() {
                             </CardDescription>
                           </div>
                         </div>
-                        <div className="text-right">
-                          <div className="text-sm font-semibold text-foreground">
+                        <div className="text-right flex-shrink-0">
+                          <Badge className="bg-foreground text-background">
                             {rec.impact}
-                          </div>
+                          </Badge>
                         </div>
                       </div>
                     </CardHeader>
+                    
+                    <CardContent className="pt-0">
+                      <div className="bg-foreground/5 rounded-lg p-4 border-2 border-foreground/10">
+                        <div className="flex items-center gap-2 mb-3">
+                          <Icon name="Database" size={16} className="text-foreground/70" />
+                          <span className="text-sm font-semibold text-foreground/70">Основано на данных:</span>
+                        </div>
+                        <div className="grid gap-2">
+                          {rec.insights.map((insight, idx) => (
+                            <div key={idx} className="flex items-start gap-3">
+                              <Icon name="CheckCircle2" size={16} className="text-foreground/50 flex-shrink-0 mt-0.5" />
+                              <div className="flex-1">
+                                <span className="text-sm text-foreground/70">{insight.label}:</span>
+                                <span className="text-sm font-medium text-foreground ml-1">{insight.value}</span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </CardContent>
                   </Card>
                 ))}
               </div>
